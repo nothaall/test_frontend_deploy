@@ -1,9 +1,11 @@
 FROM node:22-slim
 
-COPY . .
+RUN mkdir -p /usr/src/app
 
-RUN npm install
+WORKDIR /usr/src/app
 
-RUN npm run build
+COPY ./ /usr/src/app
+
+RUN npm install && npm run build
 
 CMD npm run start
